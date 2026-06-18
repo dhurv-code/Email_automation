@@ -17,9 +17,18 @@ def sync_emails():
 
     for msg in messages:
 
+        existing = conversations_collection.find_one(
+            {"gmail_id": msg["id"]}
+        )
+
+        if existing:
+            continue
+
         details = gmail.get_message_details(
             msg["id"]
         )
+
+        details["gmail_id"] = msg["id"]
 
         conversations_collection.insert_one(
             details

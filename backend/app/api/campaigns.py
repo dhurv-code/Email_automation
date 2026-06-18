@@ -2,6 +2,9 @@ from fastapi import APIRouter
 from app.models.campaign import Campaign
 from app.database.mongodb import campaigns_collection
 from app.services.campaign_service import CampaignService
+from bson import ObjectId
+
+
 router = APIRouter()
 
 @router.post("/")
@@ -25,3 +28,12 @@ def get_campaigns():
         campaign.append(campaign)
 
     return campaigns
+
+@router.delete("/{campaign_id}")
+def delete_campaign(campaign_id:str):
+
+    campaigns_collection.delete_one(
+        {"_id":ObjectId(campaign_id)}
+    )
+
+    return {"message":"Campaign Deleted"}
