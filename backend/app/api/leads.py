@@ -13,6 +13,16 @@ def create_lead(lead:Lead):
     return{
         "message":"Lead Added"
     }
+
+@router.get("/")
+def get_leads():
+    leads=[]
+    for lead in leads_collection.find():
+        lead["_id"]=str(lead["_id"])
+        leads.append(leads)
+    return leads
+
+
 @router.delete("/{lead_id}")
 def delete_lead(lead_id:str):
     leads_collection.delete_one(

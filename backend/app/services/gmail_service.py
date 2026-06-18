@@ -11,7 +11,7 @@ SCOPES = [
     "https://www.googleapis.com/auth/gmail.readonly"]
 class GmailService:
     def __init__(self):
-        self.service=self.authenticate
+        self.service=self.authenticate()
     def authenticate(self):
 
         creds = None

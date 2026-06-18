@@ -25,7 +25,7 @@ def get_campaigns():
     campaigns=[]
     for campaign in campaigns_collection.find():
         campaign["_id"]=str(campaign["_id"])
-        campaign.append(campaign)
+        campaigns.append(campaign)
 
     return campaigns
 

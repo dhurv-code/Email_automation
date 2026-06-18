@@ -10,7 +10,7 @@ class CampaignService:
         campaign = campaigns_collection.find_one(
             {"_id": ObjectId(campaign_id)}
         )
-        if not in campaign:
+        if not campaign:
             return {"error":"Campaign not found"}
         gmail=GmailService()
         leads=leads_collection.find()
