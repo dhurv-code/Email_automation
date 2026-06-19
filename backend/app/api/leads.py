@@ -19,7 +19,7 @@ def get_leads():
     leads=[]
     for lead in leads_collection.find():
         lead["_id"]=str(lead["_id"])
-        leads.append(leads)
+        leads.append(lead)
     return leads
 
 
