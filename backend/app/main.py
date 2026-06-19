@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api.gmail import router as gmail_router
+# from app.api.gmail import router as gmail_router
 from app.api.leads import router as leads_router
 from app.api.campaigns import router as campaign_router
 from app.api.conversations import router as conversations_router
@@ -20,9 +20,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(
-    gmail_router,prefix="/gmail",tags=["gmail"]
-)
+# app.include_router(
+#     gmail_router,prefix="/gmail",tags=["gmail"])
 app.include_router(leads_router,prefix="/leads",tags=["Leads"])
 app.include_router(campaign_router,prefix="/campaigns",tags=["Campaigns"])
 app.include_router(conversations_router, prefix="/conversations",tags=["Conversations"])
